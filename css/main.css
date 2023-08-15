@@ -1,0 +1,131 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --index: calc(1vw + 1vh);
+  --transition: 1.5s cubic-bezier(.05, .5, 0, 1);
+}
+
+@font-face {
+  font-family: kamerik-3d;
+  src: url(../fonts/kamerik205-heavy.woff2);
+  font-weight: 900;
+}
+
+@font-face {
+  font-family: merriweather-italic-3d;
+  src: url(../fonts/merriweather-regular-italic.woff2);
+}
+
+body {
+  background-color: #000;
+  font-family: kamerik-3d;
+  color: #d2e2ec;
+}
+
+.logo {
+  --logo-size: calc(var(--index) * 7);
+  width: var(--logo-size);
+  height: var(--logo-size);
+  background-repeat: no-repeat;
+  position: absolute;
+  left: calc(50% - calc(var(--logo-size) / 2));
+  top: calc(var(--index) * 2.8);
+  z-index: 1;
+}
+
+.layers {
+  perspective: 1000px;
+  overflow: hidden;
+}
+
+.layers__container {
+  height: 100vh;
+  min-height: 500px;
+  transform-style: preserve-3d;
+  transform: rotateX(var(--move-y)) rotateY(var(--move-x));
+  will-change: transform;
+  transition: transform var(--transition);
+}
+
+.layers__item {
+  position: absolute;
+  inset: -5vw;
+  background-size: cover;
+  background-position: center center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.layer-1 {
+  transform: translateZ(-70px) scale(1.2);
+}
+
+.layer-2 {
+  transform: translateZ(80px) scale(.8);
+}
+
+.layer-3 {
+  transform: translateZ(180px) scale(.8);
+}
+
+.layer-4 {
+  transform: translateZ(190px) scale(.8);
+}
+
+.layer-5 {
+  transform: translateX(165px) translateZ(300px) scale(.5);
+}
+
+.layer-6 {
+  transform: translateZ(380px) scale(.6);
+}
+
+.hero-content {
+  font-size: calc(var(--index) * 1.5);
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: calc(var(--index) * .1);
+  line-height: 1.5em;
+}
+
+.hero-content span {
+  display: block;
+}
+
+.hero-content__p {
+  text-transform: none;
+  font-family: merriweather-italic-3d;
+  font-size: calc(var(--index) * .7);
+}
+
+.button-start {
+  font-family: Arial;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: inherit;
+  background-color: transparent;
+  font-size: calc(var(--index) * .7);
+  padding: calc(var(--index) * .55) calc(var(--index) * 1.7);
+  border-radius: 10em;
+  border: #d2e2ec 3px solid;
+  outline: none;
+  cursor: pointer;
+  transition: all .8s ease-in;
+}
+
+.button-start:hover {
+  border: #144766 3px solid;
+  color: #144766;
+  background-color: #d2e2ec;
+}
+
+.layer-4,
+.layer-5,
+.layer-6 {
+  pointer-events: none;
+}
